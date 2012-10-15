@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0319291A162AE8EB004CBF8C /* SCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03192919162AE8EB004CBF8C /* SCNavigationController.m */; };
 		035CC4FB162A5D980061B7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CC4FA162A5D980061B7B9 /* Foundation.framework */; };
-		035CC500162A5D980061B7B9 /* SCViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 035CC4FF162A5D980061B7B9 /* SCViewController.h */; };
-		035CC502162A5D980061B7B9 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035CC501162A5D980061B7B9 /* SCViewController.m */; };
+		0377C77D162BDBBF000F7A5A /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C77C162BDBBF000F7A5A /* SCViewController.m */; };
+		0377C785162BE47A000F7A5A /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C784162BE47A000F7A5A /* SCTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,18 +20,21 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				035CC500162A5D980061B7B9 /* SCViewController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03192918162AE8EB004CBF8C /* SCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavigationController.h; sourceTree = "<group>"; };
+		03192919162AE8EB004CBF8C /* SCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNavigationController.m; sourceTree = "<group>"; };
 		035CC4F7162A5D980061B7B9 /* libSCViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		035CC4FA162A5D980061B7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		035CC4FE162A5D980061B7B9 /* SCViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCViewController-Prefix.pch"; sourceTree = "<group>"; };
-		035CC4FF162A5D980061B7B9 /* SCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
-		035CC501162A5D980061B7B9 /* SCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
+		0377C77B162BDBBF000F7A5A /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
+		0377C77C162BDBBF000F7A5A /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
+		0377C783162BE47A000F7A5A /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewController.h; sourceTree = "<group>"; };
+		0377C784162BE47A000F7A5A /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +77,12 @@
 		035CC4FC162A5D980061B7B9 /* SCViewController */ = {
 			isa = PBXGroup;
 			children = (
-				035CC4FF162A5D980061B7B9 /* SCViewController.h */,
-				035CC501162A5D980061B7B9 /* SCViewController.m */,
+				0377C77B162BDBBF000F7A5A /* SCViewController.h */,
+				0377C77C162BDBBF000F7A5A /* SCViewController.m */,
+				03192918162AE8EB004CBF8C /* SCNavigationController.h */,
+				03192919162AE8EB004CBF8C /* SCNavigationController.m */,
+				0377C783162BE47A000F7A5A /* SCTableViewController.h */,
+				0377C784162BE47A000F7A5A /* SCTableViewController.m */,
 				035CC4FD162A5D980061B7B9 /* Supporting Files */,
 			);
 			path = SCViewController;
@@ -139,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035CC502162A5D980061B7B9 /* SCViewController.m in Sources */,
+				0319291A162AE8EB004CBF8C /* SCNavigationController.m in Sources */,
+				0377C77D162BDBBF000F7A5A /* SCViewController.m in Sources */,
+				0377C785162BE47A000F7A5A /* SCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +245,7 @@
 				035CC507162A5D980061B7B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
