@@ -11,6 +11,7 @@
 #import "SCViewController.h"
 
 @interface SCViewController()
+
 @property (strong,nonatomic) SCNavigationController*		modalView;
 @property (strong,nonatomic) UIView*										mask;
 @property (strong,nonatomic) UIPanGestureRecognizer*		pan;
@@ -49,16 +50,37 @@
 - (void)panning:(UIPanGestureRecognizer*)pan
 {
 	CGPoint point = [pan translationInView:self.view];
-	
+	if (pan.state == UIGestureRecognizerStateBegan) {
+		if (fabs(point.x) < fabs(point.y)) self.panMode = 0;
+		else {
+			self.oldOffest = self.navigationController.views.contentOffset;
+			self.panMode = 1;
+		}
+	}
 	if (pan.state == UIGestureRecognizerStateChanged) {
-		if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
+		if (self.panMode == 0) {
+			if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
+		} else if (point.x >= 0 && self.navigationController.views.contentOffset.x > 0) {
+			[self.navigationController.views setContentOffset:CGPointMake(self.oldOffest.x - point.x, 0)];
+			self.lastOffest = point;
+		}
 	}
 	else if (pan.state == UIGestureRecognizerStateEnded) {
-		if (point.y > 70) [self.delegate didPanToDismissPosition];
-		else {
-			[UIView animateWithDuration:0.3 animations:^{
-				[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-			}];
+		if (self.panMode == 0) {
+			if (point.y > 70) [self.delegate didPanToDismissPosition];
+			else {
+				[UIView animateWithDuration:0.3 animations:^{
+					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+				}];
+			}
+		} else {
+			if (point.x > 70 && self.navigationController.views.contentOffset.x > 0) {
+				[self.navigationController popViewControllerAnimated:YES];
+			} else {
+				[UIView animateWithDuration:0.3 animations:^{
+					[self.navigationController.views setContentOffset:self.oldOffest];
+				}];
+			}
 		}
 	}
 }

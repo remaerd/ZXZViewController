@@ -8,9 +8,6 @@
 
 #import "SCTableViewController.h"
 
-CGPoint oldOffest;
-CGPoint lastOffest;
-
 @implementation SCTableViewController
 
 - (id)init
@@ -35,28 +32,48 @@ CGPoint lastOffest;
 {
 	CGPoint point = [pan translationInView:self.view];
 	
-	if (pan.state == UIGestureRecognizerStateBegan) oldOffest = self.tableView.contentOffset;
+	if (pan.state == UIGestureRecognizerStateBegan) {
+		if (fabs(point.x) < fabs(point.y)) {
+			self.panMode = 0;
+			self.oldOffest = self.tableView.contentOffset;
+		} else {
+			self.panMode = 1;
+			self.oldOffest = self.navigationController.views.contentOffset;
+		}
+	}
 	else if (pan.state == UIGestureRecognizerStateChanged) {
-		if (self.tableView.contentOffset.y >= 0) {
-			[self.tableView setContentOffset:CGPointMake(0, oldOffest.y - point.y)];
-			lastOffest = point;
-		} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-lastOffest.y)];
+		if (self.panMode == 0) {
+			if (self.tableView.contentOffset.y >= 0) {
+				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
+				self.lastOffest = point;
+			} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-self.lastOffest.y)];
+		} else if (point.x >= 0 && self.navigationController.views.contentOffset.x > 0) [self.navigationController.views setContentOffset:CGPointMake(self.oldOffest.x - point.x, 0)];
 	}
 	else if (pan.state == UIGestureRecognizerStateEnded) {
-		if (self.tableView.contentOffset.y < 0) {
-			if (point.y - lastOffest.y > 70) [self.delegate didPanToDismissPosition];
-			else {
-				[UIView animateWithDuration:0.3 animations:^{
-					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-					[self.tableView setContentOffset:CGPointMake(0, 0)];
-				}];
+		if (self.panMode == 0) {
+			if (self.tableView.contentOffset.y < 0) {
+				if (point.y - self.lastOffest.y > 70) [self.delegate didPanToDismissPosition];
+				else {
+					[UIView animateWithDuration:0.3 animations:^{
+						[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+						[self.tableView setContentOffset:CGPointMake(0, 0)];
+					}];
+				}
+			} else {
+				int section = [self.tableView numberOfSections] - 1;
+				CGRect lastRowRect= [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForItem:[self.tableView numberOfRowsInSection:section] - 1 inSection:section]];
+				CGFloat contentHeight = lastRowRect.origin.y + lastRowRect.size.height - self.tableView.frame.size.height + 55;
+				if (lastRowRect.origin.y + lastRowRect.size.height + 45 < self.tableView.frame.size.height) [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+				else if (self.tableView.contentOffset.y > contentHeight) [self.tableView setContentOffset:CGPointMake(0, contentHeight) animated:YES];
 			}
 		} else {
-			int section = [self.tableView numberOfSections] - 1;
-			CGRect lastRowRect= [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForItem:[self.tableView numberOfRowsInSection:section] - 1 inSection:section]];
-			CGFloat contentHeight = lastRowRect.origin.y + lastRowRect.size.height - self.tableView.frame.size.height + 55;
-			if (lastRowRect.origin.y + lastRowRect.size.height + 45 < self.tableView.frame.size.height) [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-			else if (self.tableView.contentOffset.y > contentHeight) [self.tableView setContentOffset:CGPointMake(0, contentHeight) animated:YES];
+			if (point.x > 70 && self.navigationController.views.contentOffset.x > 0) {
+				[self.navigationController popViewControllerAnimated:YES];
+			} else {
+			[UIView animateWithDuration:0.3 animations:^{
+				[self.navigationController.views setContentOffset:self.oldOffest];
+			}];
+			}
 		}
 	}
 }

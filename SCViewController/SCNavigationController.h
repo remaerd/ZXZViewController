@@ -15,6 +15,7 @@
 
 @property (strong,nonatomic) NSMutableArray*	viewControllers;
 @property (strong,nonatomic) UINavigationBar* navigationBar;
+@property (strong,nonatomic) UIScrollView*		views;
 @property (strong,nonatomic) UIView*					view;
 
 - (id)initWithRootViewController:(SCViewController*)viewController;
