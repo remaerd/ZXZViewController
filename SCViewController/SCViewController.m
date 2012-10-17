@@ -21,16 +21,36 @@
 @implementation SCViewController
 @synthesize modalViewController;
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+	if (self) [self defaultValues];
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if (self) [self defaultValues];
+    return self;
+}
+
 - (id)init
 {
 	self = [super init];
-	if (self) {
-		self.scDelegate = self;
-		self.previousViewMaskAlpha = 0.5;
-		self.previousViewMaskColor = [UIColor blackColor];
-		self.presentSpeed = 0.4;
-	}
+	if (self) [self defaultValues];
 	return self;
+}
+
+- (void)defaultValues
+{
+    self.scDelegate = self;
+    self.previousViewMaskAlpha = 0.5;
+    self.previousViewMaskColor = [UIColor blackColor];
+    self.presentSpeed = 0.4;
+    self.enablePullToDismiss = YES;
+    self.positionY = 70;
+    self.positionX = 70;
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -51,9 +71,9 @@
 			
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
 		if (self.panMode == 0) {
-			if (point.y > 70) [self.scDelegate didPanToDismissPosition];
+			if (point.y > self.positionY && self.enablePullToDismiss) [self.scDelegate didPanToPositionY];
 			else {
-				[UIView animateWithDuration:0.3 animations:^{
+				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 				}];
 			}
