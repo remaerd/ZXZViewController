@@ -19,10 +19,7 @@ SCViewController 继承了 UIViewController 的全部 API。这意味着你可�
 
 3. 将超类（Superclass）改成 SCViewController。如：`@interface MainViewController : SCViewController`
 
-4. 在 viewDidLoad 或 loadView 中，为 view 添加 PanGestureRecognizer，代码如下：`[
-self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)]];`
-
-5. 通过使用 `didPanToPositionX` 或者 `didPanToPositionY` 探测用户是否进行拖动。并在里面输入需要执行的命令。如退出 ModalView：`- (void)didPanToPositionX{[self dismissModalViewControllerAnimated:YES];}`
+4. 通过使用 `didPanToPositionX` 或者 `didPanToPositionY` 探测用户是否进行拖动。当用户拖动界面到达一定距离时，里面的代码就会执行。示范代码如下：`- (void)didPanToPositionX{[self dismissModalViewControllerAnimated:YES];}`
 
 只要完成以上步骤，SCViewController 就能正常运行。
 

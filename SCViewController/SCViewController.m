@@ -54,6 +54,11 @@
     self.positionX = 70;
 }
 
+- (void)viewDidLoad
+{
+	[self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)]];
+}
+
 - (void)panning:(UIPanGestureRecognizer*)pan
 {
 	CGPoint point = [pan translationInView:self.view];
