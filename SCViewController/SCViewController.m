@@ -81,6 +81,18 @@
 	}
 }
 
+- (void)didPanToPositionY
+{
+    [UIView animateWithDuration:self.presentSpeed animations:^{
+        [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+    }];
+}
+
+- (void)didPanToPositionX
+{
+    [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+}
+
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
 {
 	CGFloat speed = 0;

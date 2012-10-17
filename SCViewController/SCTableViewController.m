@@ -85,7 +85,7 @@
                 [self.tableView setUserInteractionEnabled:YES];
 			}
 		} else {
-			if (point.x > self.positionX && self != self.navigationController.viewControllers[0]) [self.navigationController popViewControllerAnimated:YES];
+			if (point.x > self.positionX && self != self.navigationController.viewControllers[0]) [self didPanToPositionX];
 			else {
 				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.tableView setTransform:CGAffineTransformMakeTranslation(0, 0)];

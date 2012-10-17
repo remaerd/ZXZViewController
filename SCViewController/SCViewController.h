@@ -16,8 +16,10 @@
 
 @optional
 
-// 在满足指定的 Y 值时激活
+// 在大于 Y 数值时激活
 - (void)didPanToPositionX;
+
+// 在大于 X 数值时激活
 - (void)didPanToPositionY;
 
 @end
@@ -39,13 +41,16 @@
 // 显示新 ModalView 时，背景 View 的遮罩透明度
 @property (nonatomic) CGFloat															previousViewMaskAlpha;
 
-// 是否使用拖动退出 ModalView
-@property (nonatomic) BOOL																enablePullToDismiss;
+// 是否使用纵向拖动
+@property (nonatomic) BOOL																enableVerticalPull;
 
-// 在大于这个数值时，返回到前一个 ViewController
+// 是否使用横向拖动
+@property (nonatomic) BOOL																enableHorizontalPull;
+
+// X 数值，在大于这个数值时激活 didPanToPositionX
 @property (nonatomic) CGFloat															positionX;
 
-// 在大于这个数值时，退出 ModalView
+// Y 数值，在大于这个数值时激活 didPanToPositionY
 @property (nonatomic) CGFloat															positionY;
 
 //===========================================================
