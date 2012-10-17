@@ -12,7 +12,7 @@
 #pragma 委托
 //===========================================================
 
-@protocol SCViewControllerDelegate <NSObject>
+@protocol SFViewControllerDelegate <NSObject>
 
 @optional
 
@@ -28,9 +28,9 @@
 #pragma 接口
 //===========================================================
 
-@interface SCViewController : UIViewController <SCViewControllerDelegate>
+@interface SFViewController : UIViewController <SFViewControllerDelegate>
 
-@property (strong,nonatomic) id<SCViewControllerDelegate>	scDelegate;
+@property (strong,nonatomic) id<SFViewControllerDelegate>	sfDelegate;
 
 // 显示／隐藏／推送／返回 ViewController 的动画速度
 @property (nonatomic) CGFloat															presentSpeed;

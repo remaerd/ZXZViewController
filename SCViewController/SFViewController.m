@@ -7,9 +7,9 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "SCViewController.h"
+#import "SFViewController.h"
 
-@interface SCViewController()
+@interface SFViewController()
 
 @property (nonatomic) CGPoint										lastOffest;
 @property (nonatomic) CGPoint										oldOffest;
@@ -18,7 +18,7 @@
 @property (strong,nonatomic) UIViewController*	modalViewController;
 @end
 
-@implementation SCViewController
+@implementation SFViewController
 @synthesize modalViewController;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -44,7 +44,7 @@
 
 - (void)defaultValues
 {
-    self.scDelegate = self;
+    self.sfDelegate = self;
     self.previousViewMaskAlpha = 0.5;
     self.previousViewMaskColor = [UIColor blackColor];
     self.presentSpeed = 0.4;
@@ -77,7 +77,7 @@
 			
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
 		if (self.panMode == 0 && self.enableVerticalPull) {
-			if (point.y > self.positionY && self.enableVerticalPull) [self.scDelegate didPanToPositionY];
+			if (point.y > self.positionY && self.enableVerticalPull) [self.sfDelegate didPanToPositionY];
 			else {
 				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];

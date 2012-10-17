@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 Sean Cheng. All rights reserved.
 //
 
-#import "SCTableViewController.h"
+#import "SFTableViewController.h"
 
-@interface SCTableViewController()
+@interface SFTableViewController()
 @property (nonatomic) CGPoint										lastOffest;
 @property (nonatomic) CGPoint										oldOffest;
 @property (nonatomic) int												panMode;
 @property (nonatomic) UITableViewStyle					style;
 @end
 
-@implementation SCTableViewController
+@implementation SFTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,7 +26,7 @@
 
 - (void)loadView
 {
-	self.scDelegate = self;
+	self.sfDelegate = self;
 	CGFloat height = [[UIScreen mainScreen]bounds].size.height - 45 - 20;
 	
 	self.view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, height)];
@@ -68,7 +68,7 @@
         [self.tableView setUserInteractionEnabled:YES];
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.tableView.contentOffset.y < 0) {
-				if (point.y - self.lastOffest.y > self.positionY) [self.scDelegate didPanToPositionY];
+				if (point.y - self.lastOffest.y > self.positionY) [self.sfDelegate didPanToPositionY];
 				else {
 					[UIView animateWithDuration:self.presentSpeed animations:^{
 						if (self.navigationController) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];

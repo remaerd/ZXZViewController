@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		035CC4FB162A5D980061B7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CC4FA162A5D980061B7B9 /* Foundation.framework */; };
-		0377C77D162BDBBF000F7A5A /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C77C162BDBBF000F7A5A /* SCViewController.m */; };
-		0377C785162BE47A000F7A5A /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C784162BE47A000F7A5A /* SCTableViewController.m */; };
+		0377C77D162BDBBF000F7A5A /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C77C162BDBBF000F7A5A /* SFViewController.m */; };
+		0377C785162BE47A000F7A5A /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C784162BE47A000F7A5A /* SFTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,13 +25,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		035CC4F7162A5D980061B7B9 /* libSCViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		035CC4F7162A5D980061B7B9 /* libSFViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSFViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		035CC4FA162A5D980061B7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		035CC4FE162A5D980061B7B9 /* SCViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCViewController-Prefix.pch"; sourceTree = "<group>"; };
-		0377C77B162BDBBF000F7A5A /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
-		0377C77C162BDBBF000F7A5A /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
-		0377C783162BE47A000F7A5A /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewController.h; sourceTree = "<group>"; };
-		0377C784162BE47A000F7A5A /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewController.m; sourceTree = "<group>"; };
+		035CC4FE162A5D980061B7B9 /* SFViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFViewController-Prefix.pch"; sourceTree = "<group>"; };
+		0377C77B162BDBBF000F7A5A /* SFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
+		0377C77C162BDBBF000F7A5A /* SFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
+		0377C783162BE47A000F7A5A /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewController.h; sourceTree = "<group>"; };
+		0377C784162BE47A000F7A5A /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 		035CC4EC162A5D980061B7B9 = {
 			isa = PBXGroup;
 			children = (
-				035CC4FC162A5D980061B7B9 /* SCViewController */,
+				035CC4FC162A5D980061B7B9 /* SFViewController */,
 				035CC4F9162A5D980061B7B9 /* Frameworks */,
 				035CC4F8162A5D980061B7B9 /* Products */,
 			);
@@ -58,7 +58,7 @@
 		035CC4F8162A5D980061B7B9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				035CC4F7162A5D980061B7B9 /* libSCViewController.a */,
+				035CC4F7162A5D980061B7B9 /* libSFViewController.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,22 +71,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		035CC4FC162A5D980061B7B9 /* SCViewController */ = {
+		035CC4FC162A5D980061B7B9 /* SFViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0377C77B162BDBBF000F7A5A /* SCViewController.h */,
-				0377C77C162BDBBF000F7A5A /* SCViewController.m */,
-				0377C783162BE47A000F7A5A /* SCTableViewController.h */,
-				0377C784162BE47A000F7A5A /* SCTableViewController.m */,
+				0377C77B162BDBBF000F7A5A /* SFViewController.h */,
+				0377C77C162BDBBF000F7A5A /* SFViewController.m */,
+				0377C783162BE47A000F7A5A /* SFTableViewController.h */,
+				0377C784162BE47A000F7A5A /* SFTableViewController.m */,
 				035CC4FD162A5D980061B7B9 /* Supporting Files */,
 			);
+			name = SFViewController;
 			path = SCViewController;
 			sourceTree = "<group>";
 		};
 		035CC4FD162A5D980061B7B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				035CC4FE162A5D980061B7B9 /* SCViewController-Prefix.pch */,
+				035CC4FE162A5D980061B7B9 /* SFViewController-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -94,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		035CC4F6162A5D980061B7B9 /* SCViewController */ = {
+		035CC4F6162A5D980061B7B9 /* SFViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "SCViewController" */;
+			buildConfigurationList = 035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "SFViewController" */;
 			buildPhases = (
 				035CC4F3162A5D980061B7B9 /* Sources */,
 				035CC4F4162A5D980061B7B9 /* Frameworks */,
@@ -106,9 +107,9 @@
 			);
 			dependencies = (
 			);
-			name = SCViewController;
+			name = SFViewController;
 			productName = SCViewController;
-			productReference = 035CC4F7162A5D980061B7B9 /* libSCViewController.a */;
+			productReference = 035CC4F7162A5D980061B7B9 /* libSFViewController.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -120,7 +121,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Sean Cheng";
 			};
-			buildConfigurationList = 035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "SCViewController" */;
+			buildConfigurationList = 035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "SFViewController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -132,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				035CC4F6162A5D980061B7B9 /* SCViewController */,
+				035CC4F6162A5D980061B7B9 /* SFViewController */,
 			);
 		};
 /* End PBXProject section */
@@ -142,8 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0377C77D162BDBBF000F7A5A /* SCViewController.m in Sources */,
-				0377C785162BE47A000F7A5A /* SCTableViewController.m in Sources */,
+				0377C77D162BDBBF000F7A5A /* SFViewController.m in Sources */,
+				0377C785162BE47A000F7A5A /* SFTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,9 +202,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/SCViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCViewController/SCViewController-Prefix.pch";
+				GCC_PREFIX_HEADER = "SCViewController/SFViewController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SFViewController;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -213,9 +214,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/SCViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCViewController/SCViewController-Prefix.pch";
+				GCC_PREFIX_HEADER = "SCViewController/SFViewController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SFViewController;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -223,7 +224,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "SCViewController" */ = {
+		035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "SFViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				035CC503162A5D980061B7B9 /* Debug */,
@@ -232,7 +233,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "SCViewController" */ = {
+		035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "SFViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				035CC506162A5D980061B7B9 /* Debug */,

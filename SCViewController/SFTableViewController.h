@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Sean Cheng. All rights reserved.
 //
 
-#import "SCViewController.h"
+#import "SFViewController.h"
 
-@interface SCTableViewController : SCViewController <UITableViewDataSource,UITableViewDelegate>
+@interface SFTableViewController : SFViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong,nonatomic) UITableView*	tableView;
 

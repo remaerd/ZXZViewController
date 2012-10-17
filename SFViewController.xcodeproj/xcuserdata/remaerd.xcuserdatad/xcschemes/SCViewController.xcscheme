@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "035CC4F6162A5D980061B7B9"
                BuildableName = "libSCViewController.a"
-               BlueprintName = "SCViewController"
-               ReferencedContainer = "container:SCViewController.xcodeproj">
+               BlueprintName = "SFViewController"
+               ReferencedContainer = "container:SFViewController.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
