@@ -10,6 +10,11 @@
 
 @interface SCTableViewController : SCViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (strong,nonatomic) UITableView* tableView;
+@property (strong,nonatomic) UITableView*												tableView;
+@property (nonatomic) CGPoint																		lastOffest;
+@property (nonatomic) CGPoint																		oldOffest;
+@property (nonatomic) int																				panMode;
+
+- (void)panning:(UIPanGestureRecognizer*)pan;
 
 @end
