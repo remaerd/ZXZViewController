@@ -48,7 +48,8 @@
     self.previousViewMaskAlpha = 0.5;
     self.previousViewMaskColor = [UIColor blackColor];
     self.presentSpeed = 0.4;
-    self.enablePullToDismiss = YES;
+    self.enableVerticalPull = YES;
+		self.enableHorizontalPull = YES;
     self.positionY = 70;
     self.positionX = 70;
 }
@@ -63,15 +64,15 @@
 		else self.panMode = 1;
 		
 	} else if (pan.state == UIGestureRecognizerStateChanged) {
-		if (self.panMode == 0) {
+		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
 		} else {
 			[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
 		}
 			
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
-		if (self.panMode == 0) {
-			if (point.y > self.positionY && self.enablePullToDismiss) [self.scDelegate didPanToPositionY];
+		if (self.panMode == 0 && self.enableVerticalPull) {
+			if (point.y > self.positionY && self.enableVerticalPull) [self.scDelegate didPanToPositionY];
 			else {
 				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];

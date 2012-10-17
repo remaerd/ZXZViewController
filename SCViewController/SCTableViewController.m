@@ -56,26 +56,26 @@
 		
 	} else if (pan.state == UIGestureRecognizerStateChanged) {
 		
-		if (self.panMode == 0) {
+		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.tableView.contentOffset.y >= 0) {
                 
 				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
 				self.lastOffest = point;
 			} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-self.lastOffest.y)];
-		} else if (point.x >= 0) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
+		} else if (point.x >= 0 && self.enableHorizontalPull) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
 	}
 	else if (pan.state == UIGestureRecognizerStateEnded) {
         [self.tableView setUserInteractionEnabled:YES];
-		if (self.panMode == 0) {
+		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.tableView.contentOffset.y < 0) {
-				if (point.y - self.lastOffest.y > self.positionY && self.enablePullToDismiss) [self.scDelegate didPanToPositionY];
+				if (point.y - self.lastOffest.y > self.positionY) [self.scDelegate didPanToPositionY];
 				else {
 					[UIView animateWithDuration:self.presentSpeed animations:^{
 						if (self.navigationController) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 						[self.tableView setContentOffset:CGPointMake(0, 0)];
 					}];
 				}
-			} else {
+			} else if (self.enableHorizontalPull) {
 				int section = [self.tableView numberOfSections] - 1;
                 NSIndexPath* index = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:section] - 1 inSection:section];
 				CGRect lastRowRect= [self.tableView rectForRowAtIndexPath:index];

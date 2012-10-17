@@ -4,6 +4,11 @@ iPhone 5 变长了，对于手指较短的人而言，拇指很难碰到导航�
 
 SCViewController 主要为 UIViewController／UITableViewController 添加 '滑动检测' 功能，让 View 能够通过向下滑动／向左滑动等动作离开 ModalView 或返回到前一个菜单，让用户不需伸长手指点击导航栏上的相应按钮。
 
+![](https://photos-2.dropbox.com/t/0/AACCQbuQmap2_uUnu8_2UUpzi40sXYHEH-kSYkUMubyH3A/10/12114735/jpeg/1024x768/2/1350500400/0/2/Untitled.tiff/udjg1rLLGPHEcDzQp2IFWY2lDektsmVXuHtPhXsh7VU)
+
+
+### [看实际效果](http://d.pr/v/7g15)
+
 # HOW
 ## 开始使用 SCViewController
 SCViewController 继承了 UIViewController 的全部 API。这意味着你可以不需要大面积修改您现成的代码。
