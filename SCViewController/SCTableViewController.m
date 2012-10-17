@@ -19,6 +19,9 @@
 		[self.tableView setScrollEnabled:NO];
 		[self.tableView setDelegate:self];
 		[self.tableView setDataSource:self];
+		for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
+			[self.tableView removeGestureRecognizer:gesture];
+		}
 		[self.view addSubview:self.tableView];
 	}
 	return self;
@@ -41,7 +44,7 @@
 		
 		if (self.panMode == 0) {
 			if (self.tableView.contentOffset.y >= 0) {
-				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
+				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y) animated:NO];
 				self.lastOffest = point;
 			} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-self.lastOffest.y)];
 		} else if (point.x >= 0) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
@@ -51,7 +54,7 @@
 			if (self.tableView.contentOffset.y < 0) {
 				if (point.y - self.lastOffest.y > 70) [self.scDelegate didPanToDismissPosition];
 				else {
-					[UIView animateWithDuration:0.3 animations:^{
+					[UIView animateWithDuration:self.presentSpeed animations:^{
 						[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 						[self.tableView setContentOffset:CGPointMake(0, 0)];
 					}];
@@ -66,7 +69,7 @@
 		} else {
 			if (point.x > 70 && self != self.navigationController.viewControllers[0]) [self.navigationController popViewControllerAnimated:YES];
 			else {
-				[UIView animateWithDuration:0.3 animations:^{
+				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.tableView setTransform:CGAffineTransformMakeTranslation(0, 0)];
 				}];
 			}

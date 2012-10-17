@@ -19,8 +19,8 @@
 @interface SCViewController : UIViewController <SCViewControllerDelegate>
 
 @property (strong,nonatomic) id<SCViewControllerDelegate>	scDelegate;
-@property (nonatomic) CGPoint															lastOffest;
-@property (nonatomic) CGPoint															oldOffest;
-@property (nonatomic) int																	panMode;
-
+@property (nonatomic) CGFloat															presentSpeed;
+@property (nonatomic) CGFloat															pushPopSpeed;
+@property (nonatomic) UIColor*														previousViewMaskColor;
+@property (nonatomic) CGFloat															previousViewMaskAlpha;
 @end

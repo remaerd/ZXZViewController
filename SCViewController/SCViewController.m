@@ -11,8 +11,11 @@
 
 @interface SCViewController()
 
-@property (strong,nonatomic) UIView* mask;
-@property (strong,nonatomic) UIViewController* modalViewController;
+@property (nonatomic) CGPoint										lastOffest;
+@property (nonatomic) CGPoint										oldOffest;
+@property (nonatomic) int												panMode;
+@property (strong,nonatomic) UIView*						mask;
+@property (strong,nonatomic) UIViewController*	modalViewController;
 @end
 
 @implementation SCViewController
@@ -21,7 +24,12 @@
 - (id)init
 {
 	self = [super init];
-	if (self) self.scDelegate = self;
+	if (self) {
+		self.scDelegate = self;
+		self.previousViewMaskAlpha = 0.5;
+		self.previousViewMaskColor = [UIColor blackColor];
+		self.presentSpeed = 0.4;
+	}
 	return self;
 }
 
@@ -56,14 +64,14 @@
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
 {
 	CGFloat speed = 0;
-	if (flag) speed = 0.5;
+	if (flag) speed = self.presentSpeed;
 	
 	[self setModalViewController:viewControllerToPresent];
 	[self.modalViewController.view setFrame:CGRectMake(0, 0, 320, 460)];
 	[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, self.view.frame.size.height)];
 	
 	self.mask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.window.frame.size.height)];
-	[self.mask setBackgroundColor:[UIColor blackColor]];
+	[self.mask setBackgroundColor:self.previousViewMaskColor];
 	[self.mask setAlpha:0];
 	
 	if (self.navigationController) {
@@ -75,7 +83,7 @@
 	}
 	
 	[UIView animateWithDuration:speed animations:^{
-		[self.mask setAlpha:0.5];
+		[self.mask setAlpha:self.previousViewMaskAlpha];
 		[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 	}];
 }
@@ -83,7 +91,7 @@
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
 	CGFloat speed = 0;
-	if (flag) speed = 0.5;
+	if (flag) speed = self.presentSpeed;
 	
 	[UIView animateWithDuration:speed animations:^{
 		[self.mask setAlpha:0];
