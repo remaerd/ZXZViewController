@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0321C246162FBBE9007B6684 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0321C243162FBBE9007B6684 /* SFTableViewController.m */; };
+		0321C247162FBBE9007B6684 /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0321C245162FBBE9007B6684 /* SFViewController.m */; };
 		035CC4FB162A5D980061B7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CC4FA162A5D980061B7B9 /* Foundation.framework */; };
-		0377C77D162BDBBF000F7A5A /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C77C162BDBBF000F7A5A /* SFViewController.m */; };
-		0377C785162BE47A000F7A5A /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0377C784162BE47A000F7A5A /* SFTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,13 +25,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0321C242162FBBE9007B6684 /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTableViewController.h; path = SFViewController/SFTableViewController.h; sourceTree = SOURCE_ROOT; };
+		0321C243162FBBE9007B6684 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTableViewController.m; path = SFViewController/SFTableViewController.m; sourceTree = SOURCE_ROOT; };
+		0321C244162FBBE9007B6684 /* SFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFViewController.h; path = SFViewController/SFViewController.h; sourceTree = SOURCE_ROOT; };
+		0321C245162FBBE9007B6684 /* SFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFViewController.m; path = SFViewController/SFViewController.m; sourceTree = SOURCE_ROOT; };
 		035CC4F7162A5D980061B7B9 /* libSFViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSFViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		035CC4FA162A5D980061B7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		035CC4FE162A5D980061B7B9 /* SFViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFViewController-Prefix.pch"; sourceTree = "<group>"; };
-		0377C77B162BDBBF000F7A5A /* SFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
-		0377C77C162BDBBF000F7A5A /* SFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
-		0377C783162BE47A000F7A5A /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewController.h; sourceTree = "<group>"; };
-		0377C784162BE47A000F7A5A /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +74,10 @@
 		035CC4FC162A5D980061B7B9 /* SFViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0377C77B162BDBBF000F7A5A /* SFViewController.h */,
-				0377C77C162BDBBF000F7A5A /* SFViewController.m */,
-				0377C783162BE47A000F7A5A /* SFTableViewController.h */,
-				0377C784162BE47A000F7A5A /* SFTableViewController.m */,
+				0321C242162FBBE9007B6684 /* SFTableViewController.h */,
+				0321C243162FBBE9007B6684 /* SFTableViewController.m */,
+				0321C244162FBBE9007B6684 /* SFViewController.h */,
+				0321C245162FBBE9007B6684 /* SFViewController.m */,
 				035CC4FD162A5D980061B7B9 /* Supporting Files */,
 			);
 			name = SFViewController;
@@ -143,8 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0377C77D162BDBBF000F7A5A /* SFViewController.m in Sources */,
-				0377C785162BE47A000F7A5A /* SFTableViewController.m in Sources */,
+				0321C246162FBBE9007B6684 /* SFTableViewController.m in Sources */,
+				0321C247162FBBE9007B6684 /* SFViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
