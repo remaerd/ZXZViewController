@@ -17,10 +17,10 @@
 #import "SFTableViewController.h"
 
 @interface SFTableViewController()
-@property (nonatomic) CGPoint										lastOffest;
-@property (nonatomic) CGPoint										oldOffest;
-@property (nonatomic) int												panMode;
-@property (nonatomic) UITableViewStyle					style;
+@property (nonatomic) CGPoint           lastOffest;
+@property (nonatomic) CGPoint			oldOffest;
+@property (nonatomic) int				panMode;
+@property (nonatomic) UITableViewStyle	style;
 @end
 
 @implementation SFTableViewController
@@ -34,20 +34,22 @@
 
 - (void)loadView
 {
+    [super loadView];
 	self.sfDelegate = self;
 	CGFloat height = [[UIScreen mainScreen]bounds].size.height - 45 - 20;
-	
-	self.view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, height)];
 	
 	self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, height) style:self.style];
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
+	[self setView:self.tableView];
 	
+	NSLog(@"%@",self.navigationController.view.subviews);
+    
 //	通过删掉 ScrollView 自带的 UIScrollViewPanGestureRecognizer，让 TableView 能够正常运行，防止出现滚动后
 	for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
 		if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
 	}
-	[self.view addSubview:self.tableView];
+	
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -83,7 +85,7 @@
 						[self.tableView setContentOffset:CGPointMake(0, 0)];
 					}];
 				}
-			} else if (self.enableHorizontalPull) {
+			} else if (self.enableVerticalPull) {
 				int section = [self.tableView numberOfSections] - 1;
                 NSIndexPath* index = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:section] - 1 inSection:section];
 				CGRect lastRowRect= [self.tableView rectForRowAtIndexPath:index];
@@ -93,7 +95,7 @@
                 [self.tableView setUserInteractionEnabled:YES];
 			}
 		} else {
-			if (point.x > self.positionX && self != self.navigationController.viewControllers[0]) [self didPanToPositionX];
+			if (point.x > self.positionX && self != self.navigationController.viewControllers[0] && self.enableHorizontalPull) [self didPanToPositionX];
 			else {
 				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.tableView setTransform:CGAffineTransformMakeTranslation(0, 0)];

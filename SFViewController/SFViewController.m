@@ -19,11 +19,12 @@
 
 @interface SFViewController()
 
-@property (nonatomic) CGPoint										lastOffest;
-@property (nonatomic) CGPoint										oldOffest;
-@property (nonatomic) int												panMode;
-@property (strong,nonatomic) UIView*						mask;
-@property (strong,nonatomic) UIViewController*	modalViewController;
+@property (nonatomic) CGPoint							lastOffest;
+@property (nonatomic) CGPoint							oldOffest;
+@property (nonatomic) int								panMode;
+@property (strong,nonatomic) UIPanGestureRecognizer*    pan;
+@property (strong,nonatomic) UIView*					mask;
+@property (strong,nonatomic) UIViewController*          modalViewController;
 @end
 
 @implementation SFViewController
@@ -52,19 +53,25 @@
 
 - (void)defaultValues
 {
+    self.pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)];
     self.sfDelegate = self;
     self.previousViewMaskAlpha = 0.5;
     self.previousViewMaskColor = [UIColor blackColor];
     self.presentSpeed = 0.4;
     self.enableVerticalPull = YES;
-		self.enableHorizontalPull = YES;
+    self.enableHorizontalPull = YES;
     self.positionY = 70;
     self.positionX = 70;
 }
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-	[self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)]];
+	[self.view addGestureRecognizer:self.pan];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.view removeGestureRecognizer:self.pan];
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -77,21 +84,32 @@
 		else self.panMode = 1;
 		
 	} else if (pan.state == UIGestureRecognizerStateChanged) {
+        
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
-		} else {
-			[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
-		}
+		} else if (self.enableHorizontalPull && point.x >= 0) {
+            NSLog(@"%i,%f",self.panMode,point.x);
+            [self.view setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
+        }
 			
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (point.y > self.positionY && self.enableVerticalPull) [self.sfDelegate didPanToPositionY];
 			else {
+                NSLog(@"Vertical");
 				[UIView animateWithDuration:self.presentSpeed animations:^{
 					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 				}];
 			}
-		}
+		} else {
+            if (point.x > self.positionX && self.enableHorizontalPull) [self.sfDelegate didPanToPositionX];
+			else {
+                NSLog(@"Horizonal");
+				[UIView animateWithDuration:self.presentSpeed animations:^{
+					[self.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+				}];
+			}
+        }
 	}
 }
 
@@ -104,7 +122,7 @@
 
 - (void)didPanToPositionX
 {
-    [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+    [self.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
