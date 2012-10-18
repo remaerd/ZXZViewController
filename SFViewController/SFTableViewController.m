@@ -122,4 +122,19 @@
 	}
 }
 
+- (void)didPanToPositionY
+{
+    [UIView animateWithDuration:self.presentSpeed animations:^{
+        if (self.navigationController) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+        [self.tableView setContentOffset:CGPointMake(0, 0)];
+    }];
+}
+
+- (void)didPanToPositionX
+{
+    [UIView animateWithDuration:self.presentSpeed animations:^{
+        [self.tableView setTransform:CGAffineTransformMakeTranslation(0, 0)];
+    }];
+}
+
 @end

@@ -20,6 +20,7 @@
 @interface SFViewController()
 
 @property (nonatomic) int								panMode;
+@property (strong,nonatomic) UIPanGestureRecognizer*	pan;
 @property (strong,nonatomic) UIView*					mask;
 @property (strong,nonatomic) UIViewController*          modalViewController;
 @property (strong,nonatomic) UIView*		backgroundView;
@@ -51,6 +52,7 @@
 
 - (void)defaultValues
 {
+	self.pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)];
     self.sfDelegate = self;
     self.previousViewMaskAlpha = 0.5;
     self.previousViewMaskColor = [UIColor blackColor];
@@ -64,8 +66,19 @@
 - (void)loadView
 {
 	[super loadView];
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)]];
 	[self setBackgroundColor:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	[self.view addGestureRecognizer:self.pan];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self.view removeGestureRecognizer:self.pan];
 }
 
 - (void)setBackgroundColor:(UIColor*)color
@@ -84,11 +97,6 @@
 			}
 		else [self.view setBackgroundColor:self.view.backgroundColor];
 	}
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
 }
 
 - (void)setNavigationBackgroundColor:(UIColor *)navigationBackgroundColor
