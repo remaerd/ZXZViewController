@@ -21,6 +21,7 @@
 @property (nonatomic) CGPoint			oldOffest;
 @property (nonatomic) int				panMode;
 @property (nonatomic) UITableViewStyle	style;
+@property (strong,nonatomic) UIView*		backgroundView;
 @end
 
 @implementation SFTableViewController
@@ -34,7 +35,7 @@
 
 - (void)loadView
 {
-    [super loadView];
+	[super loadView];
 	self.sfDelegate = self;
 	CGFloat height = [[UIScreen mainScreen]bounds].size.height - 45 - 20;
 	
@@ -42,14 +43,30 @@
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
 	[self setView:self.tableView];
-	
-	NSLog(@"%@",self.navigationController.view.subviews);
-    
+	[self setBackgroundColor:nil];
+
 //	通过删掉 ScrollView 自带的 UIScrollViewPanGestureRecognizer，让 TableView 能够正常运行，防止出现滚动后
 	for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
 		if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
 	}
-	
+}
+
+- (void)setBackgroundColor:(UIColor*)color
+{
+	if (self.view) {
+		if (self.navigationController) {
+			[self.tableView setBackgroundView:[[UIView alloc]init]];
+			for (UIView* view in self.navigationController.view.subviews) {
+				if ([NSStringFromClass([view class]) isEqualToString:@"UINavigationTransitionView"]) {
+					CGFloat height = [[UIScreen mainScreen]bounds].size.height - 20;
+					self.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, height)];
+					[self.navigationController.view insertSubview:self.backgroundView belowSubview:view];
+					if (color) [self.backgroundView setBackgroundColor:color];
+					else [self.backgroundView setBackgroundColor:[UIColor colorWithPatternImage:[[UIImage imageNamed:@"default-tableview-background"]stretchableImageWithLeftCapWidth:0 topCapHeight:0]]];
+				}
+			}
+		}
+	}
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -72,7 +89,7 @@
 				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
 				self.lastOffest = point;
 			} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-self.lastOffest.y)];
-		} else if (point.x >= 0 && self.enableHorizontalPull) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
+		} else if (point.x >= 0 && self.enableHorizontalPull && self.navigationController) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
 	}
 	else if (pan.state == UIGestureRecognizerStateEnded) {
         [self.tableView setUserInteractionEnabled:YES];

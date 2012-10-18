@@ -38,6 +38,10 @@
 
 @interface SFViewController : UIViewController <SFViewControllerDelegate>
 
+@property (strong,nonatomic) UIColor*	navigationBackgroundColor;
+
+@property (strong,nonatomic) UIImage*	navigationBackgroundImage;
+
 @property (strong,nonatomic) id<SFViewControllerDelegate>	sfDelegate;
 
 // 显示／隐藏／推送／返回 ViewController 的动画速度
@@ -65,6 +69,4 @@
 #pragma 函数
 //===========================================================
 
-//
-- (void)panning:(UIPanGestureRecognizer*)pan;
 @end

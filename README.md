@@ -35,13 +35,13 @@ ShortFingerViewController 自带一些可以设置的选项，其中包括
 - `positionX` X 数值，在大于这个数值时激活 didPanToPositionX
 - `positionY` Y 数值，在大于这个数值时激活 didPanToPositionY
 
-## TableViewController
+## 背景
 
-由于 TableViewController 的情况特殊，此类并没有直接继承 UITableViewController，而是继承了 SFViewController，并在此基础上添加 TableView。这样做保证了您可以为 TableView 添加背景，而不是纯黑色。
+对于带有导航栏（UINavigationController）的 UIViewController／UITableViewController，您需要进行另外的设置，保证界面在左右拖动的过程中，不会出现令人尴尬的效果。如下图：
 
-如果您需要添加背景色／背景图。您需要删除 TableView 自带的背景。代码如下 `[self.tableView setBackgroundView:[[UIView alloc]init]];`
+通过设置 `navigationBackgroundColor` 或者 `navigationBackgroundImage`。您可以指定显示特定的颜色或图片。在 `loadView` 的 `[super loadView]` 之后或 `viewDidLoad` 中加上如 `[self setNavigationBackgroundColor:[UIColor redColor]];` ，您就能够对带有导航栏的 ViewController 设置一个显示在背面的背景。
 
-在删除背景后，给 View 加上背景色。 如：`[self.view setBackgroundColor:[UIColor whiteColor]];`
+如果您的 SFViewController 没有用到 UINavigationController。也可以使用同样的方法，设置 SFViewController／SFTableViewController 的背景。
 
 # ME
 

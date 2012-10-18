@@ -19,12 +19,10 @@
 
 @interface SFViewController()
 
-@property (nonatomic) CGPoint							lastOffest;
-@property (nonatomic) CGPoint							oldOffest;
 @property (nonatomic) int								panMode;
-@property (strong,nonatomic) UIPanGestureRecognizer*    pan;
 @property (strong,nonatomic) UIView*					mask;
 @property (strong,nonatomic) UIViewController*          modalViewController;
+@property (strong,nonatomic) UIView*		backgroundView;
 @end
 
 @implementation SFViewController
@@ -53,7 +51,6 @@
 
 - (void)defaultValues
 {
-    self.pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)];
     self.sfDelegate = self;
     self.previousViewMaskAlpha = 0.5;
     self.previousViewMaskColor = [UIColor blackColor];
@@ -64,19 +61,49 @@
     self.positionX = 70;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)loadView
 {
-	[self.view addGestureRecognizer:self.pan];
+	[super loadView];
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)]];
+	[self setBackgroundColor:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)setBackgroundColor:(UIColor*)color
 {
-    [self.view removeGestureRecognizer:self.pan];
+	if (self.view) {
+		if (self.navigationController) {
+			for (UIView* view in self.navigationController.view.subviews) {
+				if ([NSStringFromClass([view class]) isEqualToString:@"UINavigationTransitionView"]) {
+					CGFloat height = [[UIScreen mainScreen]bounds].size.height - 20;
+					self.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, height)];
+					[self.navigationController.view insertSubview:self.backgroundView belowSubview:view];
+					if (color) [self.backgroundView setBackgroundColor:color];
+					else [self.backgroundView setBackgroundColor:self.view.backgroundColor];
+					}
+				}
+			}
+		else [self.view setBackgroundColor:self.view.backgroundColor];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
+}
+
+- (void)setNavigationBackgroundColor:(UIColor *)navigationBackgroundColor
+{
+	[self setBackgroundColor:navigationBackgroundColor];
+}
+
+- (void)setNavigationBackgroundImage:(UIImage *)navigationBackgroundImage
+{
+	[self setBackgroundColor:[UIColor colorWithPatternImage:navigationBackgroundImage]];
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
 {
-	CGPoint point = [pan translationInView:self.view];
+	CGPoint point = [pan translationInView:self.navigationController.view];
 	
 	if (pan.state == UIGestureRecognizerStateBegan) {
 		
@@ -87,28 +114,25 @@
         
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
-		} else if (self.enableHorizontalPull && point.x >= 0) {
-            NSLog(@"%i,%f",self.panMode,point.x);
-            [self.view setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
+		} else if (self.enableHorizontalPull && point.x >= 0 && self.navigationController) {
+            [self.view setFrame:CGRectMake(point.x, 0, self.view.frame.size.width, self.view.frame.size.height)];
         }
 			
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (point.y > self.positionY && self.enableVerticalPull) [self.sfDelegate didPanToPositionY];
 			else {
-                NSLog(@"Vertical");
-				[UIView animateWithDuration:self.presentSpeed animations:^{
-					[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-				}];
-			}
+                [UIView animateWithDuration:self.presentSpeed animations:^{
+                    [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+                }];
+            }
 		} else {
-            if (point.x > self.positionX && self.enableHorizontalPull) [self.sfDelegate didPanToPositionX];
+            if (point.x > self.positionX && self.enableHorizontalPull && self.navigationController) [self.sfDelegate didPanToPositionX];
 			else {
-                NSLog(@"Horizonal");
-				[UIView animateWithDuration:self.presentSpeed animations:^{
-					[self.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-				}];
-			}
+                [UIView animateWithDuration:self.presentSpeed animations:^{
+                    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                }];
+            }
         }
 	}
 }
@@ -122,7 +146,9 @@
 
 - (void)didPanToPositionX
 {
-    [self.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+	[UIView animateWithDuration:self.presentSpeed animations:^{
+		[self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	}];
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
