@@ -21,7 +21,7 @@
 @property (nonatomic) CGPoint			oldOffest;
 @property (nonatomic) int				panMode;
 @property (nonatomic) UITableViewStyle	style;
-@property (strong,nonatomic) UIView*		backgroundView;
+@property (strong,nonatomic) UIView*	backgroundView;
 @end
 
 @implementation SFTableViewController
@@ -40,32 +40,15 @@
 	CGFloat height = [[UIScreen mainScreen]bounds].size.height - 45 - 20;
 	
 	self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, height) style:self.style];
+    [self.tableView setBackgroundView:[[UIView alloc]init]];
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
 	[self setView:self.tableView];
-	[self setBackgroundColor:nil];
 
 //	通过删掉 ScrollView 自带的 UIScrollViewPanGestureRecognizer，让 TableView 能够正常运行，防止出现滚动后
 	for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
 		if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
-	}
-}
-
-- (void)setBackgroundColor:(UIColor*)color
-{
-	if (self.view) {
-		if (self.navigationController) {
-			[self.tableView setBackgroundView:[[UIView alloc]init]];
-			for (UIView* view in self.navigationController.view.subviews) {
-				if ([NSStringFromClass([view class]) isEqualToString:@"UINavigationTransitionView"]) {
-					CGFloat height = [[UIScreen mainScreen]bounds].size.height - 20;
-					self.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, height)];
-					[self.navigationController.view insertSubview:self.backgroundView belowSubview:view];
-					if (color) [self.backgroundView setBackgroundColor:color];
-					else [self.backgroundView setBackgroundColor:[UIColor colorWithPatternImage:[[UIImage imageNamed:@"default-tableview-background"]stretchableImageWithLeftCapWidth:0 topCapHeight:0]]];
-				}
-			}
-		}
+		if ([NSStringFromClass([gesture class]) isEqualToString:@"UISwipeGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
 	}
 }
 

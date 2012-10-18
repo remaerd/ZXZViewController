@@ -23,7 +23,7 @@
 @property (strong,nonatomic) UIPanGestureRecognizer*	pan;
 @property (strong,nonatomic) UIView*					mask;
 @property (strong,nonatomic) UIViewController*          modalViewController;
-@property (strong,nonatomic) UIView*		backgroundView;
+@property (strong,nonatomic) UIView*                    backgroundView;
 @end
 
 @implementation SFViewController
@@ -63,10 +63,10 @@
     self.positionX = 70;
 }
 
-- (void)loadView
+- (void)viewWillAppear:(BOOL)animated
 {
-	[super loadView];
-	[self setBackgroundColor:nil];
+	[super viewWillAppear:animated];
+	[self setBackground];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,13 +75,14 @@
 	[self.view addGestureRecognizer:self.pan];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
-	[self.view removeGestureRecognizer:self.pan];
+	[super viewDidDisappear:animated];
+	[self.backgroundView removeFromSuperview];
+	self.backgroundView = nil;
 }
 
-- (void)setBackgroundColor:(UIColor*)color
+- (void)setBackground
 {
 	if (self.view) {
 		if (self.navigationController) {
@@ -89,24 +90,21 @@
 				if ([NSStringFromClass([view class]) isEqualToString:@"UINavigationTransitionView"]) {
 					CGFloat height = [[UIScreen mainScreen]bounds].size.height - 20;
 					self.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, height)];
+					[self.backgroundView setAlpha:0];
 					[self.navigationController.view insertSubview:self.backgroundView belowSubview:view];
-					if (color) [self.backgroundView setBackgroundColor:color];
-					else [self.backgroundView setBackgroundColor:self.view.backgroundColor];
-					}
+                    [UIView animateWithDuration:0.3 animations:^{
+                            [self.backgroundView setAlpha:1];
+                    }];
+                    if (self.navigationBackgroundColor) [self.backgroundView setBackgroundColor:self.navigationBackgroundColor];
+                    else {
+                        NSString* class = NSStringFromClass([[self class]superclass]);
+                        if ([class isEqualToString:@"SFTableViewController"]) [self.backgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"default-tableview-background"]]];
+                        else [self.backgroundView setBackgroundColor:self.view.backgroundColor];
+                    }
 				}
-			}
-		else [self.view setBackgroundColor:self.view.backgroundColor];
-	}
-}
-
-- (void)setNavigationBackgroundColor:(UIColor *)navigationBackgroundColor
-{
-	[self setBackgroundColor:navigationBackgroundColor];
-}
-
-- (void)setNavigationBackgroundImage:(UIImage *)navigationBackgroundImage
-{
-	[self setBackgroundColor:[UIColor colorWithPatternImage:navigationBackgroundImage]];
+			} 
+        } else [self.view setBackgroundColor:self.view.backgroundColor];
+    }
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
