@@ -37,11 +37,11 @@ ShortFingerViewController 自带一些可以设置的选项，其中包括
 
 ## 背景
 
-对于带有导航栏（UINavigationController）的 UIViewController／UITableViewController，您需要进行另外的设置，保证界面在左右拖动的过程中，不会出现令人尴尬的效果。如下图：
+SFViewController 自带两张图片，用于显示标准 TableView 背景。如果您的 TableView 需要使用标准背景，您**必须**将他们导入到您的项目当中。
 
-通过设置 `navigationBackgroundColor` 或者 `navigationBackgroundImage`。您可以指定显示特定的颜色或图片。在 `loadView` 的 `[super loadView]` 之后或 `viewDidLoad` 中加上如 `[self setNavigationBackgroundColor:[UIColor redColor]];` ，您就能够对带有导航栏的 ViewController 设置一个显示在背面的背景。
+通过设置 `navigationBackgroundColor` ，您可以指定显示特定的颜色或图片。在 `loadView` 或 `viewDidLoad` 中加上如 `[self setNavigationBackgroundColor:[UIColor redColor]];` ，您就能够对带有导航栏的 ViewController 设置一个不受拖动干扰的背景。
 
-如果您的 SFViewController 没有用到 UINavigationController。也可以使用同样的方法，设置 SFViewController／SFTableViewController 的背景。
+当在不同的 ViewController 之间跳转时，背景会进行自动过渡。这意味着如果您的 ViewControllers 使用着同一个背景的话，您需要在每一个 ViewControllers 中分别设置一次背景，否则 ViewController 会显示标准背景。
 
 # ME
 
