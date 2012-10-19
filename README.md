@@ -6,7 +6,6 @@ ShortFingerViewController 主要为 UIViewController／UITableViewController 添
 
 ![](http://cloudsfm-show.b0.upaiyun.com/udjg1rLLGPHEcDzQp2IFWY2lDektsmVXuHtPhXsh7VU.jpeg)
 
-
 ### [看实际效果](http://d.pr/v/7g15)
 
 # HOW
@@ -20,6 +19,10 @@ ShortFingerViewController 继承了 UIViewController 的全部 API。这意味�
 3. 将超类（Superclass）改成 SFViewController。如：`@interface MainViewController : SFViewController`
 
 4. 通过使用 `didPanToPositionX` 或者 `didPanToPositionY` 探测用户是否进行拖动。当用户拖动界面到达一定距离时，里面的代码就会执行。示范代码如下：`- (void)didPanToPositionX{[self dismissModalViewControllerAnimated:YES];}`
+
+5. 如果您使用 Storyboard 或 Nib 开发软件，必须生成一个用于控制的 IBOutlet。打开助理编辑器（Assistant Editor，晚礼服图标），在 Interface Builder 中找到相应的 TableView 并按住右键，然后拖到右方的空白处。将 IBOutlet 命名为 tableView。这样能够保证您的设计能够在 SFViewController 中正常运行。
+
+![](http://cloudsfm-show.b0.upaiyun.com/jkasdt20p983eijrdwfugofq.png)
 
 只要完成以上步骤，ShortFingerViewController 就能正常运行。
 
