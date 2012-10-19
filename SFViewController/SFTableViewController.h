@@ -18,7 +18,7 @@
 
 @interface SFTableViewController : SFViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (strong,nonatomic) id	tableView;
+@property (strong,nonatomic) UITableView*   tableView;
 
 - (id)initWithStyle:(UITableViewStyle)style;
 

@@ -49,7 +49,7 @@
     }
     
 //	通过删掉 ScrollView 自带的 UIScrollViewPanGestureRecognizer，让 TableView 能够正常运行，防止出现滚动后
-    for (UIGestureRecognizer* gesture in ((UITableView*)self.tableView).gestureRecognizers) {
+    for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UISwipeGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
     }
@@ -57,13 +57,12 @@
 
 - (void)panning:(UIPanGestureRecognizer*)pan
 {
-    UITableView* tableView = self.tableView;
 	CGPoint point = [pan translationInView:self.view];
 	
 	if (pan.state == UIGestureRecognizerStateBegan) {
 		if (fabs(point.x) <= fabs(point.y)) {
 			self.panMode = 0;
-			self.oldOffest = tableView.contentOffset;
+			self.oldOffest = self.tableView.contentOffset;
 		} else {
 			self.panMode = 1;
 		}
@@ -71,7 +70,7 @@
 	} else if (pan.state == UIGestureRecognizerStateChanged) {
 		
 		if (self.panMode == 0 && self.enableVerticalPull) {
-			if (tableView.contentOffset.y >= 0) {
+			if (self.tableView.contentOffset.y >= 0) {
                 
 				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
 				self.lastOffest = point;
@@ -81,7 +80,7 @@
 	else if (pan.state == UIGestureRecognizerStateEnded) {
         [self.tableView setUserInteractionEnabled:YES];
 		if (self.panMode == 0 && self.enableVerticalPull) {
-			if (tableView.contentOffset.y < 0) {
+			if (self.tableView.contentOffset.y < 0) {
 				if (point.y - self.lastOffest.y > self.positionY) [self.sfDelegate didPanToPositionY];
 				else {
 					[UIView animateWithDuration:self.presentSpeed animations:^{
@@ -93,9 +92,9 @@
 				int section = [self.tableView numberOfSections] - 1;
                 NSIndexPath* index = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:section] - 1 inSection:section];
 				CGRect lastRowRect= [self.tableView rectForRowAtIndexPath:index];
-				CGFloat contentHeight = lastRowRect.origin.y + lastRowRect.size.height - tableView.frame.size.height + 10;
-				if (lastRowRect.origin.y + lastRowRect.size.height + 45 < tableView.frame.size.height) [tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-				else if (tableView.contentOffset.y > contentHeight) [self.tableView setContentOffset:CGPointMake(0, contentHeight) animated:YES];
+				CGFloat contentHeight = lastRowRect.origin.y + lastRowRect.size.height - self.tableView.frame.size.height + 10;
+				if (lastRowRect.origin.y + lastRowRect.size.height + 45 < self.tableView.frame.size.height) [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+				else if (self.tableView.contentOffset.y > contentHeight) [self.tableView setContentOffset:CGPointMake(0, contentHeight) animated:YES];
                 [self.tableView setUserInteractionEnabled:YES];
 			}
 		} else {
