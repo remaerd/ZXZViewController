@@ -32,6 +32,7 @@
 		035CC4F7162A5D980061B7B9 /* libSFViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSFViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		035CC4FA162A5D980061B7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		035CC4FE162A5D980061B7B9 /* SFViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFViewController-Prefix.pch"; sourceTree = "<group>"; };
+		03B5EAE2163252A400FA902A /* SFViewController-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFViewController-Prefix.pch"; path = "SFViewController/SFViewController-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 				0321C243162FBBE9007B6684 /* SFTableViewController.m */,
 				0321C244162FBBE9007B6684 /* SFViewController.h */,
 				0321C245162FBBE9007B6684 /* SFViewController.m */,
+				03B5EAE2163252A400FA902A /* SFViewController-Prefix.pch */,
 				035CC4FD162A5D980061B7B9 /* Supporting Files */,
 			);
 			name = SFViewController;
@@ -200,9 +202,9 @@
 		035CC506162A5D980061B7B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SCViewController.dst;
+				DSTROOT = /tmp/SFViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCViewController/SFViewController-Prefix.pch";
+				GCC_PREFIX_HEADER = "SFViewController/SFViewController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SFViewController;
 				SKIP_INSTALL = YES;
@@ -212,9 +214,9 @@
 		035CC507162A5D980061B7B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SCViewController.dst;
+				DSTROOT = /tmp/SFViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCViewController/SFViewController-Prefix.pch";
+				GCC_PREFIX_HEADER = "SFViewController/SFViewController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SFViewController;
 				SKIP_INSTALL = YES;

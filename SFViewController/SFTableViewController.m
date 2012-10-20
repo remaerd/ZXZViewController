@@ -40,8 +40,7 @@
     
     if (self.tableView) [self.tableView setBackgroundView:[[UIView alloc]init]];
     else {
-        CGFloat height = [[UIScreen mainScreen]bounds].size.height - 45 - 20;
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, height) style:self.style];
+        self.tableView = [[UITableView alloc]initWithFrame:self.view.frame style:self.style];
         [self.tableView setBackgroundView:[[UIView alloc]init]];
         [self.tableView setDelegate:self];
         [self.tableView setDataSource:self];
@@ -53,6 +52,7 @@
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UISwipeGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
     }
+	NSLog(@"%@",self.tableView.gestureRecognizers);
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan

@@ -163,7 +163,8 @@
 	if (flag) speed = self.presentSpeed;
 	
 	[self setModalViewController:viewControllerToPresent];
-	[self.modalViewController.view setFrame:CGRectMake(0, 0, 320, 460)];
+	CGRect bounds = [[UIScreen mainScreen]bounds];
+	[self.modalViewController.view setFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height - 20)];
 	[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, self.view.frame.size.height)];
 	
 	self.mask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.window.frame.size.height)];
