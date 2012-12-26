@@ -52,7 +52,6 @@
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
         if ([NSStringFromClass([gesture class]) isEqualToString:@"UISwipeGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
     }
-	NSLog(@"%@",self.tableView.gestureRecognizers);
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
