@@ -46,12 +46,6 @@
         [self.tableView setDataSource:self];
         [self setView:self.tableView];
     }
-    
-//	通过删掉 ScrollView 自带的 UIScrollViewPanGestureRecognizer，让 TableView 能够正常运行，防止出现滚动后
-    for (UIGestureRecognizer* gesture in self.tableView.gestureRecognizers) {
-        if ([NSStringFromClass([gesture class]) isEqualToString:@"UIScrollViewPanGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
-        if ([NSStringFromClass([gesture class]) isEqualToString:@"UISwipeGestureRecognizer"]) [self.tableView removeGestureRecognizer:gesture];
-    }
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -77,7 +71,6 @@
 		} else if (point.x >= 0 && self.enableHorizontalPull && self.navigationController) [self.tableView setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
 	}
 	else if (pan.state == UIGestureRecognizerStateEnded) {
-        [self.tableView setUserInteractionEnabled:YES];
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.tableView.contentOffset.y < 0) {
 				if (point.y - self.lastOffest.y > self.positionY) [self.sfDelegate didPanToPositionY];
@@ -94,7 +87,6 @@
 				CGFloat contentHeight = lastRowRect.origin.y + lastRowRect.size.height - self.tableView.frame.size.height + 10;
 				if (lastRowRect.origin.y + lastRowRect.size.height + 45 < self.tableView.frame.size.height) [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 				else if (self.tableView.contentOffset.y > contentHeight) [self.tableView setContentOffset:CGPointMake(0, contentHeight) animated:YES];
-                [self.tableView setUserInteractionEnabled:YES];
 			}
 		} else {
 			if (point.x > self.positionX && self != self.navigationController.viewControllers[0] && self.enableHorizontalPull) [self didPanToPositionX];

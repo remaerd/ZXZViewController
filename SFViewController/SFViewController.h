@@ -46,7 +46,7 @@
 @property (nonatomic) CGFloat   presentSpeed;
 
 // 显示新 ModalView 时，背景 View 的遮罩颜色
-@property (nonatomic) UIColor*  previousViewMaskColor;
+@property (copy,nonatomic) UIColor*  previousViewMaskColor;
 
 // 显示新 ModalView 时，背景 View 的遮罩透明度
 @property (nonatomic) CGFloat   previousViewMaskAlpha;

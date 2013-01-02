@@ -16,7 +16,7 @@
 
 #import "SFViewController.h"
 
-@interface SFTableViewController : SFViewController <UITableViewDataSource,UITableViewDelegate>
+@interface SFTableViewController : SFViewController <UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
 @property (strong,nonatomic) UITableView*   tableView;
 
