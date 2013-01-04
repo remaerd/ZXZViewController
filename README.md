@@ -4,7 +4,7 @@ iPhone 5 变长了，对于手指较短的人而言，拇指很难碰到导航�
 
 ShortFingerViewController 主要为 UIViewController／UITableViewController 添加 '滑动检测' 功能，让 View 能够通过向下滑动／向左滑动等动作离开 ModalView 或返回到前一个菜单，让用户不需伸长手指点击导航栏上的相应按钮。
 
-![](d.pr/i/farj+)
+![](http://d.pr/i/farj+)
 
 ### [看实际效果](http://d.pr/v/7g15)
 
