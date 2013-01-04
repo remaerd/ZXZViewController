@@ -64,7 +64,6 @@
 		
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (self.tableView.contentOffset.y >= 0) {
-                
 				[self.tableView setContentOffset:CGPointMake(0, self.oldOffest.y - point.y)];
 				self.lastOffest = point;
 			} else if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y-self.lastOffest.y)];

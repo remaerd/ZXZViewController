@@ -53,14 +53,14 @@
 - (void)defaultValues
 {
 	self.pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)];
-    self.sfDelegate = self;
-    self.previousViewMaskAlpha = 0.5;
-    self.previousViewMaskColor = [UIColor blackColor];
-    self.presentSpeed = 0.4;
-    self.enableVerticalPull = YES;
-    self.enableHorizontalPull = YES;
-    self.positionY = 70;
-    self.positionX = 70;
+	self.sfDelegate = self;
+	self.previousViewMaskAlpha = 0.5;
+	self.previousViewMaskColor = [UIColor blackColor];
+	self.presentSpeed = 0.5;
+	self.enableVerticalPull = YES;
+	self.enableHorizontalPull = YES;
+	self.positionY = 70;
+	self.positionX = 70;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,6 +159,8 @@
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
 {
+	[self.view removeGestureRecognizer:self.pan];
+	
 	CGFloat speed = 0;
 	if (flag) speed = self.presentSpeed;
 	
@@ -181,14 +183,16 @@
 	
 	[UIView animateWithDuration:speed animations:^{
 		[self.mask setAlpha:self.previousViewMaskAlpha];
-		[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-	}];
+		[self.modalViewController.view setTransform:CGAffineTransformIdentity];
+	} completion:nil];
 }
 
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
 	CGFloat speed = 0;
 	if (flag) speed = self.presentSpeed;
+	
+	[self.view addGestureRecognizer:self.pan];
 	
 	[UIView animateWithDuration:speed animations:^{
 		[self.mask setAlpha:0];
