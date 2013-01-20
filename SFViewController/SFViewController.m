@@ -1,7 +1,7 @@
 /*============================================================
  
  The MIT License (MIT)
- Copyright (c) 2012 Sean Cheng
+ Copyright (c) 2013 Sean Cheng
  
  ==============================================================
  
@@ -167,7 +167,9 @@
 	[self setModalViewController:viewControllerToPresent];
 	CGRect bounds = [[UIScreen mainScreen]bounds];
 	[self.modalViewController.view setFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height - 20)];
-	[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, self.view.frame.size.height)];
+	NSInteger height = self.view.frame.size.height;
+	if (self.navigationController) height += 44;
+	[self.modalViewController.view setTransform:CGAffineTransformMakeTranslation(0, height)];
 	
 	self.mask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.window.frame.size.height)];
 	[self.mask setBackgroundColor:self.previousViewMaskColor];
