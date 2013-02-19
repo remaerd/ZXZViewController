@@ -4,7 +4,7 @@ iPhone 5 变长了，对于手指较短的人而言，拇指很难碰到导航�
 
 ShortFingerViewController 主要为 UIViewController／UITableViewController 添加 '滑动检测' 功能，让 View 能够通过向下滑动／向左滑动等动作离开 ModalView 或返回到前一个菜单，让用户不需伸长手指点击导航栏上的相应按钮。
 
-![](http://d.pr/i/farj+)
+![](http://i.imgur.com/JS2iQEE.png)
 
 ### [看实际效果](http://d.pr/v/7g15)
 
@@ -22,7 +22,7 @@ ShortFingerViewController 继承了 UIViewController 的全部 API。这意味�
 
 5. 如果您使用 Storyboard 或 Nib 开发软件，必须生成一个用于控制的 IBOutlet。打开助理编辑器（Assistant Editor，晚礼服图标），在 Interface Builder 中找到相应的 TableView 并按住右键，然后拖到右方的空白处。将 IBOutlet 命名为 tableView。这样能够保证您的设计能够在 SFViewController 中正常运行。
 
-![](http://d.pr/i/hz4W+)
+![](http://i.imgur.com/fEzuiq8.png)
 
 只要完成以上步骤，ShortFingerViewController 就能正常运行。
 
