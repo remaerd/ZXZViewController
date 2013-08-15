@@ -1,46 +1,38 @@
-/*============================================================
- 
- The MIT License (MIT)
- Copyright (c) 2013 Sean Cheng
- 
- ==============================================================
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- 
- ==============================================================
- */
+//
+//  ZXZSwipeableViewController.m
+//  SCFoundation
+//
+//  Created by Sean Cheng on 8/9/13.
+//  Copyright (c) 2013 Extremely Limited. All rights reserved.
+//
 
 #import <QuartzCore/QuartzCore.h>
-#import "SFViewController.h"
+#import "ZXZSwipeableViewController.h"
 
-@interface SFViewController()
+@interface ZXZSwipeableViewController()
 
-@property (nonatomic) int								panMode;
+@property (nonatomic) int															panMode;
 @property (strong,nonatomic) UIPanGestureRecognizer*	pan;
-@property (strong,nonatomic) UIView*					mask;
-@property (strong,nonatomic) UIViewController*          modalViewController;
-@property (strong,nonatomic) UIView*                    backgroundView;
+@property (strong,nonatomic) UIView*									mask;
+@property (strong,nonatomic) UIViewController*				modalViewController;
+@property (strong,nonatomic) UIView*									backgroundView;
 @end
 
-@implementation SFViewController
+@implementation ZXZSwipeableViewController
 @synthesize modalViewController;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithCoder:aDecoder];
+	self = [super initWithCoder:aDecoder];
 	if (self) [self defaultValues];
-    return self;
+	return self;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) [self defaultValues];
-    return self;
+	return self;
 }
 
 - (id)init
@@ -48,6 +40,12 @@
 	self = [super init];
 	if (self) [self defaultValues];
 	return self;
+}
+
+- (void)loadView
+{
+	[super loadView];
+	if (!self.view) self.view = [[UIView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 
 - (void)defaultValues
@@ -92,19 +90,19 @@
 					self.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, height)];
 					[self.backgroundView setAlpha:0];
 					[self.navigationController.view insertSubview:self.backgroundView belowSubview:view];
-                    [UIView animateWithDuration:0.3 animations:^{
-                            [self.backgroundView setAlpha:1];
-                    }];
-                    if (self.navigationBackgroundColor) [self.backgroundView setBackgroundColor:self.navigationBackgroundColor];
-                    else {
-                        NSString* class = NSStringFromClass([[self class]superclass]);
-                        if ([class isEqualToString:@"SFTableViewController"]) [self.backgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"default-tableview-background"]]];
-                        else [self.backgroundView setBackgroundColor:self.view.backgroundColor];
-                    }
+					[UIView animateWithDuration:0.3 animations:^{
+						[self.backgroundView setAlpha:1];
+					}];
+					if (self.navigationBackgroundColor) [self.backgroundView setBackgroundColor:self.navigationBackgroundColor];
+					else {
+						NSString* class = NSStringFromClass([[self class]superclass]);
+						if ([class isEqualToString:@"SFTableViewController"]) [self.backgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"default-tableview-background"]]];
+						else [self.backgroundView setBackgroundColor:self.view.backgroundColor];
+					}
 				}
-			} 
-        } else [self.view setBackgroundColor:self.view.backgroundColor];
-    }
+			}
+		} else [self.view setBackgroundColor:self.view.backgroundColor];
+	}
 }
 
 - (void)panning:(UIPanGestureRecognizer*)pan
@@ -117,37 +115,40 @@
 		else self.panMode = 1;
 		
 	} else if (pan.state == UIGestureRecognizerStateChanged) {
-        
+		
 		if (self.panMode == 0 && self.enableVerticalPull) {
-			if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
-		} else if (self.enableHorizontalPull && point.x >= 0 && self.navigationController) {
-            [self.view setFrame:CGRectMake(point.x, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        }
-			
+			if (self.navigationController) {
+				if (self.navigationController.view.frame.origin.y >= 0) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
+			} else [self.view setTransform:CGAffineTransformMakeTranslation(0, point.y)];
+		} else if (self.enableHorizontalPull && point.x >= 0) {
+			[self.view setTransform:CGAffineTransformMakeTranslation(point.x, 0)];
+		}
+		
 	} else if (pan.state == UIGestureRecognizerStateEnded) {
 		if (self.panMode == 0 && self.enableVerticalPull) {
 			if (point.y > self.positionY && self.enableVerticalPull) [self.sfDelegate didPanToPositionY];
 			else {
-                [UIView animateWithDuration:self.presentSpeed animations:^{
-                    [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-                }];
-            }
+				[UIView animateWithDuration:self.presentSpeed animations:^{
+					if (self.navigationController) [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+					else [self.view setTransform:CGAffineTransformIdentity];
+				}];
+			}
 		} else {
-            if (point.x > self.positionX && self.enableHorizontalPull && self.navigationController) [self.sfDelegate didPanToPositionX];
+			if (point.x > self.positionX && self.enableHorizontalPull && self.navigationController) [self.sfDelegate didPanToPositionX];
 			else {
-                [UIView animateWithDuration:self.presentSpeed animations:^{
-                    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                }];
-            }
-        }
+				[UIView animateWithDuration:self.presentSpeed animations:^{
+					[self.view setTransform:CGAffineTransformIdentity];
+				}];
+			}
+		}
 	}
 }
 
 - (void)didPanToPositionY
 {
-    [UIView animateWithDuration:self.presentSpeed animations:^{
-        [self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
-    }];
+	[UIView animateWithDuration:self.presentSpeed animations:^{
+		[self.navigationController.view setTransform:CGAffineTransformMakeTranslation(0, 0)];
+	}];
 }
 
 - (void)didPanToPositionX

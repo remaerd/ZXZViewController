@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0340699817BCF2C3001185F4 /* ZXZLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340698E17BCF2C3001185F4 /* ZXZLoopViewController.m */; };
+		0340699917BCF2C3001185F4 /* ZXZNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340699017BCF2C3001185F4 /* ZXZNavigationViewController.m */; };
+		0340699A17BCF2C3001185F4 /* ZXZSwipeableTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340699217BCF2C3001185F4 /* ZXZSwipeableTableCell.m */; };
+		0340699B17BCF2C3001185F4 /* ZXZSwipeableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340699417BCF2C3001185F4 /* ZXZSwipeableTableViewController.m */; };
+		0340699C17BCF2C3001185F4 /* ZXZSwipeableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340699617BCF2C3001185F4 /* ZXZSwipeableViewController.m */; };
+		035CC4FB162A5D980061B7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CC4FA162A5D980061B7B9 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		035CC4F5162A5D980061B7B9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0340698D17BCF2C3001185F4 /* ZXZLoopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZXZLoopViewController.h; path = ZXZViewController/ZXZLoopViewController.h; sourceTree = SOURCE_ROOT; };
+		0340698E17BCF2C3001185F4 /* ZXZLoopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZXZLoopViewController.m; path = ZXZViewController/ZXZLoopViewController.m; sourceTree = SOURCE_ROOT; };
+		0340698F17BCF2C3001185F4 /* ZXZNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZXZNavigationViewController.h; path = ZXZViewController/ZXZNavigationViewController.h; sourceTree = SOURCE_ROOT; };
+		0340699017BCF2C3001185F4 /* ZXZNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZXZNavigationViewController.m; path = ZXZViewController/ZXZNavigationViewController.m; sourceTree = SOURCE_ROOT; };
+		0340699117BCF2C3001185F4 /* ZXZSwipeableTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZXZSwipeableTableCell.h; path = ZXZViewController/ZXZSwipeableTableCell.h; sourceTree = SOURCE_ROOT; };
+		0340699217BCF2C3001185F4 /* ZXZSwipeableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZXZSwipeableTableCell.m; path = ZXZViewController/ZXZSwipeableTableCell.m; sourceTree = SOURCE_ROOT; };
+		0340699317BCF2C3001185F4 /* ZXZSwipeableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZXZSwipeableTableViewController.h; path = ZXZViewController/ZXZSwipeableTableViewController.h; sourceTree = SOURCE_ROOT; };
+		0340699417BCF2C3001185F4 /* ZXZSwipeableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZXZSwipeableTableViewController.m; path = ZXZViewController/ZXZSwipeableTableViewController.m; sourceTree = SOURCE_ROOT; };
+		0340699517BCF2C3001185F4 /* ZXZSwipeableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZXZSwipeableViewController.h; path = ZXZViewController/ZXZSwipeableViewController.h; sourceTree = SOURCE_ROOT; };
+		0340699617BCF2C3001185F4 /* ZXZSwipeableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZXZSwipeableViewController.m; path = ZXZViewController/ZXZSwipeableViewController.m; sourceTree = SOURCE_ROOT; };
+		0340699717BCF2C3001185F4 /* ZXZViewController-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZXZViewController-Prefix.pch"; path = "ZXZViewController/ZXZViewController-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		035CC4F7162A5D980061B7B9 /* libZXZViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZXZViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		035CC4FA162A5D980061B7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		035D3A3717BCEE6300B181AD /* SCViewController-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCViewController-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		035CC4F4162A5D980061B7B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035CC4FB162A5D980061B7B9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035CC4EC162A5D980061B7B9 = {
+			isa = PBXGroup;
+			children = (
+				035CC4FC162A5D980061B7B9 /* ZXZViewController */,
+				035CC4F9162A5D980061B7B9 /* Frameworks */,
+				035CC4F8162A5D980061B7B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		035CC4F8162A5D980061B7B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				035CC4F7162A5D980061B7B9 /* libZXZViewController.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		035CC4F9162A5D980061B7B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				035CC4FA162A5D980061B7B9 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		035CC4FC162A5D980061B7B9 /* ZXZViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0340698D17BCF2C3001185F4 /* ZXZLoopViewController.h */,
+				0340698E17BCF2C3001185F4 /* ZXZLoopViewController.m */,
+				0340698F17BCF2C3001185F4 /* ZXZNavigationViewController.h */,
+				0340699017BCF2C3001185F4 /* ZXZNavigationViewController.m */,
+				0340699117BCF2C3001185F4 /* ZXZSwipeableTableCell.h */,
+				0340699217BCF2C3001185F4 /* ZXZSwipeableTableCell.m */,
+				0340699317BCF2C3001185F4 /* ZXZSwipeableTableViewController.h */,
+				0340699417BCF2C3001185F4 /* ZXZSwipeableTableViewController.m */,
+				0340699517BCF2C3001185F4 /* ZXZSwipeableViewController.h */,
+				0340699617BCF2C3001185F4 /* ZXZSwipeableViewController.m */,
+				0340699717BCF2C3001185F4 /* ZXZViewController-Prefix.pch */,
+				035CC4FD162A5D980061B7B9 /* Supporting Files */,
+			);
+			name = ZXZViewController;
+			path = SCViewController;
+			sourceTree = "<group>";
+		};
+		035CC4FD162A5D980061B7B9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				035D3A3717BCEE6300B181AD /* SCViewController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		035CC4F6162A5D980061B7B9 /* ZXZViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "ZXZViewController" */;
+			buildPhases = (
+				035CC4F3162A5D980061B7B9 /* Sources */,
+				035CC4F4162A5D980061B7B9 /* Frameworks */,
+				035CC4F5162A5D980061B7B9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZXZViewController;
+			productName = SCViewController;
+			productReference = 035CC4F7162A5D980061B7B9 /* libZXZViewController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		035CC4EE162A5D980061B7B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZXZ;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Sean Cheng";
+			};
+			buildConfigurationList = 035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "ZXZViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 035CC4EC162A5D980061B7B9;
+			productRefGroup = 035CC4F8162A5D980061B7B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				035CC4F6162A5D980061B7B9 /* ZXZViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		035CC4F3162A5D980061B7B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0340699817BCF2C3001185F4 /* ZXZLoopViewController.m in Sources */,
+				0340699B17BCF2C3001185F4 /* ZXZSwipeableTableViewController.m in Sources */,
+				0340699C17BCF2C3001185F4 /* ZXZSwipeableViewController.m in Sources */,
+				0340699A17BCF2C3001185F4 /* ZXZSwipeableTableCell.m in Sources */,
+				0340699917BCF2C3001185F4 /* ZXZNavigationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		035CC503162A5D980061B7B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		035CC504162A5D980061B7B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		035CC506162A5D980061B7B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ZXZViewController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZXZViewController/ZXZViewController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ZXZViewController;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		035CC507162A5D980061B7B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ZXZViewController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZXZViewController/ZXZViewController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ZXZViewController;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		035CC4F1162A5D980061B7B9 /* Build configuration list for PBXProject "ZXZViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035CC503162A5D980061B7B9 /* Debug */,
+				035CC504162A5D980061B7B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035CC505162A5D980061B7B9 /* Build configuration list for PBXNativeTarget "ZXZViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035CC506162A5D980061B7B9 /* Debug */,
+				035CC507162A5D980061B7B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 035CC4EE162A5D980061B7B9 /* Project object */;
+}

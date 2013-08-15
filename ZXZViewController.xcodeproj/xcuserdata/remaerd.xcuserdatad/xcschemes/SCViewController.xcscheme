@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "035CC4F6162A5D980061B7B9"
-               BuildableName = "libSFViewController.a"
-               BlueprintName = "SFViewController"
-               ReferencedContainer = "container:SFViewController.xcodeproj">
+               BuildableName = "libZXZViewController.a"
+               BlueprintName = "ZXZViewController"
+               ReferencedContainer = "container:ZXZViewController.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

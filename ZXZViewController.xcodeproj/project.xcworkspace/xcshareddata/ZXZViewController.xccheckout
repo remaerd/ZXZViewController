@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0BEB1DA8-5F57-4E50-AE0C-77E3342D2633</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZXZViewController</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>444697FF-7838-4E31-B64C-A01FE3B56200</key>
+		<string>https://github.com/remaerd/SFViewController.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZXZViewController.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>444697FF-7838-4E31-B64C-A01FE3B56200</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/remaerd/SFViewController.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>444697FF-7838-4E31-B64C-A01FE3B56200</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>444697FF-7838-4E31-B64C-A01FE3B56200</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZXZViewController</string>
+		</dict>
+	</array>
+</dict>
+</plist>
